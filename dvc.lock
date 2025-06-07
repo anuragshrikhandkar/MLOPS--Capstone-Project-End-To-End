@@ -1,0 +1,89 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data/data_ingestion.py
+    deps:
+    - path: src/data/data_ingestion.py
+      hash: md5
+      md5: 6e77214a8c0ae818ab5e17ca8bb2d651
+      size: 3458
+    params:
+      params.yaml:
+        data_ingestion.test_size: 0.2
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: 04a4aefc973742ec08bf2a024194608b.dir
+      size: 634167
+      nfiles: 2
+  data_preprocessing:
+    cmd: python src/data/data_preprocessing.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 04a4aefc973742ec08bf2a024194608b.dir
+      size: 634167
+      nfiles: 2
+    - path: src/data/data_preprocessing.py
+      hash: md5
+      md5: d90f4e8e307f1806d9de12213e4a3e22
+      size: 2897
+    outs:
+    - path: data/interim
+      hash: md5
+      md5: bad6861b94e084b3ef431ce6be3703a0.dir
+      size: 391330
+      nfiles: 2
+  feature_engineering:
+    cmd: python src/features/feature_engineering.py
+    deps:
+    - path: data/interim
+      hash: md5
+      md5: bad6861b94e084b3ef431ce6be3703a0.dir
+      size: 391330
+      nfiles: 2
+    - path: src/features/feature_engineering.py
+      hash: md5
+      md5: 20d30e71ef36b0421263bb27d8aec03f
+      size: 3463
+    params:
+      params.yaml:
+        feature_engineering.max_features: 50
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 045fb155d0f54e994df06da24d07ebd8.dir
+      size: 51890
+      nfiles: 2
+    - path: models/vectorizer.pkl
+      hash: md5
+      md5: 03095df5e01fbbdcaff51bbfce6139c2
+      size: 1862
+  model_building:
+    cmd: python src/model/model_building.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 045fb155d0f54e994df06da24d07ebd8.dir
+      size: 51890
+      nfiles: 2
+    - path: src/model/model_building.py
+      hash: md5
+      md5: f23ec5cd08f286a3456930cf5e103253
+      size: 1841
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: d352dd3b6ce6b740e2b72b2eddfb9da8
+      size: 1115
+  model_registration:
+    cmd: python src/model/register_model.py
+    deps:
+    - path: reports/experiment_info.json
+      hash: md5
+      md5: 80af7d9c05968751080ec0c94ba87ecc
+      size: 82
+    - path: src/model/register_model.py
+      hash: md5
+      md5: 528f52af7acdbcf0bf40acdd439f2600
+      size: 3184
