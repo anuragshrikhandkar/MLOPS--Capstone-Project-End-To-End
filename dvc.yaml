@@ -52,9 +52,3 @@ stages:
     deps:
     - reports/experiment_info.json
     - src/model/register_model.py
-  # evaluate_model:
-  #   cmd: python src/model/model_evaluation.py
-  #   deps:
-  #   - src/model/model_evaluation.py
-  #   outs:
-  #   - outputs/evaluation.json
