@@ -1,4 +1,29 @@
 from flask import Flask, render_template, request
+
+# -------------------------------
+# Production MLflow + DagsHub Setup (with token-based auth)
+# -------------------------------
+import os
+import mlflow
+import dagshub
+
+dagshub_token = os.getenv("CAPSTONE_TEST")
+if not dagshub_token:
+    raise EnvironmentError("CAPSTONE_TEST environment variable is not set")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "anuragshrikhandkar"
+repo_name = "MLOPS--Capstone-Project-End-To-End"
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
+
+dagshub.init(repo_owner=repo_owner, repo_name=repo_name, mlflow=True)
+
+
+
+from flask import Flask, render_template, request
 import mlflow
 import pickle
 import os
@@ -57,8 +82,8 @@ def normalize_text(text):
 # MLflow + DagsHub Setup
 # -------------------------------
 
-mlflow.set_tracking_uri('https://dagshub.com/anuragshrikhandkar/MLOPS--Capstone-Project-End-To-End.mlflow')
-dagshub.init(repo_owner='anuragshrikhandkar', repo_name='MLOPS--Capstone-Project-End-To-End', mlflow=True)
+# mlflow.set_tracking_uri('https://dagshub.com/anuragshrikhandkar/MLOPS--Capstone-Project-End-To-End.mlflow')
+# dagshub.init(repo_owner='anuragshrikhandkar', repo_name='MLOPS--Capstone-Project-End-To-End', mlflow=True)
 
 # -------------------------------
 # Flask App
