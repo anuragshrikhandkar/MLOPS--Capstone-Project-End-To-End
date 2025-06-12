@@ -3,9 +3,10 @@
 import json
 import mlflow
 import logging
-from src.logger import logging
+# from src.logger import logging
 import os
 import dagshub
+import logging 
 
 import warnings
 warnings.simplefilter("ignore", UserWarning)
