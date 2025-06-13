@@ -80,10 +80,16 @@ def normalize_text(text):
 
 # -------------------------------
 # MLflow + DagsHub Setup
-# -------------------------------
 
-mlflow.set_tracking_uri('https://dagshub.com/anuragshrikhandkar/MLOPS--Capstone-Project-End-To-End.mlflow')
-dagshub.init(repo_owner='anuragshrikhandkar', repo_name='MLOPS--Capstone-Project-End-To-End', mlflow=True)
+# -------------------------------
+os.environ["MLFLOW_TRACKING_USERNAME"] = os.getenv("MLFLOW_TRACKING_USERNAME", "")
+os.environ["MLFLOW_TRACKING_PASSWORD"] = os.getenv("MLFLOW_TRACKING_PASSWORD", "")
+
+mlflow.set_tracking_uri("https://dagshub.com/anuragshrikhandkar/MLOPS--Capstone-Project-End-To-End.mlflow")
+dagshub.init(repo_owner="anuragshrikhandkar", repo_name="MLOPS--Capstone-Project-End-To-End", mlflow=True) 
+
+# mlflow.set_tracking_uri('https://dagshub.com/anuragshrikhandkar/MLOPS--Capstone-Project-End-To-End.mlflow')
+# dagshub.init(repo_owner='anuragshrikhandkar', repo_name='MLOPS--Capstone-Project-End-To-End', mlflow=True)
 
 # -------------------------------
 # Flask App
