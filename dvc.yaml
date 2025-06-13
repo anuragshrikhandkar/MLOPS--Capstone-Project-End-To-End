@@ -52,5 +52,3 @@ stages:
     deps:
     - reports/experiment_info.json
     - src/model/register_model.py
-  create_vectorizer:
-    cmd: \
