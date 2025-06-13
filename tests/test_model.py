@@ -22,7 +22,7 @@ class TestModelLoading(unittest.TestCase):
         
         dagshub_url = "https://dagshub.com"
         repo_owner = "anuragshrikhandkar"
-        repo_name = "YT-Capstone-Project"
+        repo_name = "MLOPS--Capstone-Project-End-To-End"
 
 
     #      dagshub_url = "https://dagshub.com"
