@@ -103,7 +103,7 @@ stages:
     deps:
     - path: models/vectorizer.pkl
       hash: md5
-      md5: cfe3d47073507233c36628d96e1c95a6
+      md5: e854a99b2951117ce4d2db77df8c1354
       size: 1862
     - path: src/features/feature_engineering.py
       hash: md5
