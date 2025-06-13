@@ -82,6 +82,22 @@ stages:
       hash: md5
       md5: a902b82a1cb60b722e2384399727dce4
       size: 116
+  create_vectorizer:
+    cmd: python src/model/create_vectorizer.py
+    deps:
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 2860e08ec4a4d0d17fb4bc6c04f0b9d7
+      size: 515050
+    - path: src/model/create_vectorizer.py
+      hash: md5
+      md5: d98e0ebd076f6586f2295274f06c1858
+      size: 677
+    outs:
+    - path: models/vectorizer.pkl
+      hash: md5
+      md5: 792f461d0ed9b4c85d0c21b79f8699d6
+      size: 138812
   feature_engineering:
     cmd: python src/features/feature_engineering.py
     deps:
@@ -99,5 +115,3 @@ stages:
       md5: 045fb155d0f54e994df06da24d07ebd8.dir
       size: 51890
       nfiles: 2
-  create_vectorizer:
-    cmd: ^

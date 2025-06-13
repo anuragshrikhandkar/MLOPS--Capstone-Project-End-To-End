@@ -41,8 +41,15 @@ stages:
     deps:
     - reports/experiment_info.json
     - src/model/register_model.py
-  create_vectorizer:
-    cmd: ^
+  # create_vectorizer:
+  #   cmd: ^
+  # feature_engineering:
+  #   cmd: python src/features/feature_engineering.py
+  #   deps:
+  #   - models/vectorizer.pkl
+  #   - src/features/feature_engineering.py
+  #   outs:
+  #   - data/processed
   feature_engineering:
     cmd: python src/features/feature_engineering.py
     deps:
@@ -50,3 +57,10 @@ stages:
     - src/features/feature_engineering.py
     outs:
     - data/processed
+  create_vectorizer:
+    cmd: python src/model/create_vectorizer.py
+    deps:
+    - data/raw/train.csv
+    - src/model/create_vectorizer.py
+    outs:
+    - models/vectorizer.pkl
