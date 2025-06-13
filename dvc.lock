@@ -105,5 +105,5 @@ stages:
       nfiles: 2
     - path: models/vectorizer.pkl
       hash: md5
-      md5: f10af1e18d8243ed12bbec27c20b18be
+      md5: cfe3d47073507233c36628d96e1c95a6
       size: 1862
