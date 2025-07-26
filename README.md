@@ -1,2 +1,2 @@
 # MLOPS--Capstone-Project-End-To-End
-839a64bf3c70cb1c7bea41a50792655342974a47/Screenshot%202025-06-16%20212655.png
+<img width="897" height="592" alt="Screenshot 2025-06-11 115819" src="https://github.com/user-attachments/assets/d4d95fe4-6f15-4afa-a356-ecf17b79159e" />
